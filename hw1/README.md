@@ -152,7 +152,7 @@ executable files; download the relevant one for your computer.
 
 (If you are using some other operating system, contact the instructor.)
 
-[releases]: https://github.com/utah-cs4470-sp25/class/releases
+[releases]: https://github.com/utah-cs4470-fa26/class/releases
 
 On macOS and Linux, you'll need to mark the downloaded file
 executable. Do that with:
@@ -180,7 +180,7 @@ Note that the `gradient` program took 22 milliseconds to run (after compilation)
 Open `gradient.png` and make sure it contains a color gradient.
 
 You can find the correct output for every function [in the auto-grader
-repository](https://github.com/utah-cs4470-sp25/grader/tree/main/hw1).
+repository](https://github.com/utah-cs4470-fa26/grader/tree/main/hw1).
 If you generate images that are *similar* to the expected output, but
 not quite the same, you may be able to use the Imagemagick `compare`
 tool. If it's installed on your system, you can run a command like
