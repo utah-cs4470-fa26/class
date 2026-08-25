@@ -18,7 +18,7 @@ instructors.
 The lexical syntax of JPL is in the [JPL Specification][lex-spec]. The
 full list of tokens you should support is:
 
-[lex-spec]: https://github.com/utah-cs4470-sp25/class/blob/main/spec.md#lexical-syntax
+[lex-spec]: https://github.com/utah-cs4470-fa26/class/blob/main/spec.md#lexical-syntax
 
 ```
 ARRAY
@@ -127,7 +127,7 @@ See the specification for further details.
 
 You do not need to support the other command line flags at this time, only `-l`.
 
-[iface]: https://github.com/utah-cs4470-sp25/class/blob/main/spec.md#jpl-compiler-command-line-interface
+[iface]: https://github.com/utah-cs4470-fa26/class/blob/main/spec.md#jpl-compiler-command-line-interface
 
 **Important note:** Do not try to enforce tricky properties,
 such as integers or float values being out of range, in the lexer.
@@ -245,7 +245,7 @@ responsible* for passing the `-l` flag to your compiler. Additionally,
 the `make compile` command must complete successfully.
 
 You can find the tests and expected outputs [in the auto-grader
-repository](https://github.com/utah-cs4470-sp25/grader/tree/main/hw2).
+repository](https://github.com/utah-cs4470-fa26/grader/tree/main/hw2).
 The auto-grader uses these tests in three different ways.
 
 - Part 1 asks your compiler to lex each file in `test-lexer1` and
