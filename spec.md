@@ -340,29 +340,28 @@ Color and alpha values should be between 0.0 and 1.0, inclusive. Values below
 negative zero map to 0.0.
 
 ```
-cmd  : read image <string> to <argument>
-     | write image <expr> to <string>
+cmd : read image <string> to <argument>
+    | write image <expr> to <string>
 ```
 
 The `struct` command introduces a struct type
 
 ```
-cmd  : struct <variable> {
-         <variable>: <type>
-         ...
-       }
+cmd : struct <variable> { ;
+        <variable>: <type> ; ... ;
+      }
 ```
 
 The `let` command is like a `let` statement but defines a global:
 
 ```
-cmd  : let <lvalue> = <expr>
+cmd : let <lvalue> = <expr>
 ```
 
 The `assert` command is like an `assert` statement:
 
 ```
-cmd  : assert <expr> , <string>
+cmd : assert <expr> , <string>
 ```
 
 There are no `return` commands.
@@ -370,9 +369,9 @@ There are no `return` commands.
 Printing and timing statements are available for debugging purposes.
 
 ```
-cmd  : print <string>
-     | show <expr>
-     | time <cmd>
+cmd : print <string>
+    | show <expr>
+    | time <cmd>
 ```
 
 Printing outputs the string followed by a newline. Showing outputs the
@@ -385,9 +384,9 @@ code. Times should be as precise as possible (at least millisecond accuracy).
 Function syntax:
 
 ```
-cmd  : fn <variable> ( <binding> , ... ) : <type> { ;
-           <stmt> ; ... ;
-       }
+cmd : fn <variable> ( <binding> , ... ) : <type> { ;
+          <stmt> ; ... ;
+      }
 ```
 
 Function definitions are interpreted in order of appearance (line by line), and
