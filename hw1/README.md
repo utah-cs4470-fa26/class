@@ -204,7 +204,7 @@ As before, differing pixels are red.
 
 # Submission and grading
 
-This assignment is due Friday Jan 10.
+This assignment is due Friday Aug 28.
 
 We are happy to discuss problems and solutions with you on Discord, in office
 hours, or by appointment. Do not post full solutions to individual problems in
