@@ -208,41 +208,21 @@ keywords first, and only match variables if that fails.
 
 # Testing your code
 
-The staff JPL compiler supports the `-l` option.
+We will run your compiler using this style command:
 
-```
-    ~/Downloads $ ./jplc-macos -l ~/jpl/examples/gradient.jpl
-    NEWLINE
-    FN 'fn'
-    VARIABLE 'gradient'
-    LPAREN '('
-    VARIABLE 'i'
-    COLON ':'
-    INT 'int'
-    COMMA ','
-    VARIABLE 'j'
-    COLON ':'
-    ...
-```
+    make run TEST=/grader/ok/001.jpl FLAGS=-p
 
-For large programs, it can be tedious to compare the list of tokens
-by hand. Instead, save each output to a file and use `diff` to
-compare:
+Your Makefile must invoke your compiler on the file that `TEST` points to
+and it must pass the flags that `FLAGS` points to.
 
-    diff wrong-output.txt right-output.txt
+The `-l` flag must cause your compiler to perform lexical analysis only
+and print a list of tokens to stdout. After printing tokens,
+your compiler must print `Compilation succeeded`. If lexical analysis
+fails, your compiler must pring only `Compilation failed`.
+We will expect this output format when testing your code.
 
-This will print all the lines that differ.
 
-Once things are working, push everything to your repository. Make sure
-you can run your compiler like so:
-
-```
-    make run TEST=input.jpl
-```
-
-Here `input.jpl` is a file that we will supply. *Your makefile is
-responsible* for passing the `-l` flag to your compiler. Additionally,
-the `make compile` command must complete successfully.
+## Expected Outputs
 
 You can find the tests and expected outputs [in the auto-grader
 repository](https://github.com/utah-cs4470-fa26/grader/tree/main/hw2).
@@ -272,6 +252,36 @@ auto-grader and running:
 ```
 
 Part 1 is the hardest. Do it first! Go in order, test by test.
+
+
+## Comparing to Staff Reference Compiler
+
+The staff JPL compiler supports the `-l` option. Your compiler must match its output.
+
+```
+    ~/Downloads $ ./jplc-macos -l ~/jpl/examples/gradient.jpl
+    NEWLINE
+    FN 'fn'
+    VARIABLE 'gradient'
+    LPAREN '('
+    VARIABLE 'i'
+    COLON ':'
+    INT 'int'
+    COMMA ','
+    VARIABLE 'j'
+    COLON ':'
+    ...
+```
+
+For large programs, it can be tedious to compare the list of tokens
+by hand. Instead, save the output frm each compiler (yours and staff's) to a
+file and use `diff` to compare:
+
+    diff wrong-output.txt right-output.txt
+
+This will print all the lines that differ.
+
+Once things are working, push everything to your repository.
 
 
 # Submission and grading
