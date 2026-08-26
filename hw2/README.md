@@ -304,3 +304,5 @@ The weight assigned to each part is:
 | 15%    | Part 2   |
 | 15%    | Part 3   |
 
+Submit in pairs. If you submit on your own, there will be a 30% deduction.
+
