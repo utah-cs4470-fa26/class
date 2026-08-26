@@ -1,4 +1,4 @@
-Homework 1: Writing some JPL
+Homework 1: Write some JPL
 ==============================
 
 For this assignment you will implement some short JPL programs. In
