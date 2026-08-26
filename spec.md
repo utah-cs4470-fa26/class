@@ -90,12 +90,12 @@ The base types are Booleans, 64-bit signed integers, and 64-bit
 (double precision) floats, of which you can form arrays and structs:
 
 ```
-type : int
-     | bool
-     | float
-     | <type> [ , ... ]
-     | <variable>
-     | void
+type ::= int
+       | bool
+       | float
+       | <type> [ , ... ]
+       | <variable>
+       | void
 ```
 
 The `<variable>` branch refers to type variables introduced with
@@ -118,24 +118,24 @@ ints to floats.
 JPL has constructors for each basic type:
 
 ```
-expr : <integer>
-     | <float>
-     | true
-     | false
-     | void
+expr ::= <integer>
+       | <float>
+       | true
+       | false
+       | void
 ```
 
 Variables always have a static type from the environment:
 
 ```
-expr : <variable>
+expr ::= <variable>
 ```
 
 Struct and array constructors use curly braces and square braces, respectively:
 
 ```
-expr : <variable> { <expr> , ... }
-     | [ <expr> , ... ]
+expr ::= <variable> { <expr> , ... }
+       | [ <expr> , ... ]
 ```
 
 For structs, each expression can have a distinct type (provided those types
@@ -147,19 +147,19 @@ constructor, `[]`, is considered type invalid.
 Parentheses can be used to override precedence:
 
 ```
-expr : ( <expr> )
+expr ::= ( <expr> )
 ```
 
 Mathematical operators expect both operands to have the same type (either
 integer or float) and yield a result of the same type as the input:
 
 ```
-expr : <expr> + <expr>
-     | <expr> - <expr>
-     | <expr> * <expr>
-     | <expr> / <expr>
-     | <expr> % <expr>
-     | - <expr>
+expr ::= <expr> + <expr>
+       | <expr> - <expr>
+       | <expr> * <expr>
+       | <expr> / <expr>
+       | <expr> % <expr>
+       | - <expr>
 ```
 
 Precedence is described below. Within a precedence class, evaluation
@@ -189,26 +189,26 @@ Inequality comparisons take either two integer subexpressions or two
 float subexpressions and yield Booleans:
 
 ```
-expr : <expr> < <expr>
-     | <expr> > <expr>
-     | <expr> <= <expr>
-     | <expr> >= <expr>
+expr ::= <expr> < <expr>
+       | <expr> > <expr>
+       | <expr> <= <expr>
+       | <expr> >= <expr>
 ```
 
 Equality comparisons take two integers, two floats,
 or two Booleans and yield Booleans:
 
 ```
-expr : <expr> == <expr>
-     | <expr> != <expr>
+expr ::= <expr> == <expr>
+       | <expr> != <expr>
 ```
 
 JPL has 3 Boolean operators. Both `&&` and `||` are short-circuiting:
 
 ```
-expr : <expr> && <expr>
-     | <expr> || <expr>
-     | ! <expr>
+expr ::= <expr> && <expr>
+       | <expr> || <expr>
+       | ! <expr>
 ```
 
 Structs can be indexed with dot notation (by a variable name that matches
@@ -217,22 +217,22 @@ indexed by integers. Array indexing is zero-based; the number of indexing
 expressions must equal the array's rank:
 
 ```
-expr : <expr>.<variable>
-     | <expr> [ <expr> , ... ]
+expr ::= <expr>.<variable>
+       | <expr> [ <expr> , ... ]
 ```
 
 The conditional operator evaluates its test expression and then
 exactly one branch. Both branches must have the same type:
 
 ```
-expr : if <expr> then <expr> else <expr>
+expr ::= if <expr> then <expr> else <expr>
 ```
 
 Looping constructs. `sum` computes integers or floats.
 
 ```
-expr : array [ <variable> : <expr> , ... ] <expr>
-     | sum [ <variable> : <expr> , ... ] <expr>
+expr ::= array [ <variable> : <expr> , ... ] <expr>
+       | sum [ <variable> : <expr> , ... ] <expr>
 ```
 
 Each expression in the list of bindings (between the square brackets)
@@ -250,7 +250,7 @@ elements (of any rank) or to `sum` zero elements.
 Function calls:
 
 ```
-expr : <variable> ( <expr> , ... )
+expr ::= <variable> ( <expr> , ... )
 ```
 
 The type of a function call expression is the return type of the
@@ -288,7 +288,7 @@ expressions. Statements are pure but not total.
 Let statements bind new variable names.
 
 ```
-stmt : let <lvalue> = <expr>
+stmt ::= let <lvalue> = <expr>
 ```
 
 A `let` statement's lvalue ("left value") is so called because it is
@@ -301,13 +301,13 @@ printing the user's error message) if it is false. The expression must
 return a boolean:
 
 ```
-stmt : assert <expr> , <string>
+stmt ::= assert <expr> , <string>
 ```
 
 A return statement inside a function ends execution of that function:
 
 ```
-stmt : return <expr>
+stmt ::= return <expr>
 ```
 
 If a function has no return statements, it returns void by default.
@@ -340,28 +340,28 @@ Color and alpha values should be between 0.0 and 1.0, inclusive. Values below
 negative zero map to 0.0.
 
 ```
-cmd : read image <string> to <argument>
-    | write image <expr> to <string>
+cmd ::= read image <string> to <argument>
+      | write image <expr> to <string>
 ```
 
 The `struct` command introduces a struct type
 
 ```
-cmd : struct <variable> { ;
-        <variable>: <type> ; ... ;
-      }
+cmd ::= struct <variable> { ;
+          <variable>: <type> ; ... ;
+        }
 ```
 
 The `let` command is like a `let` statement but defines a global:
 
 ```
-cmd : let <lvalue> = <expr>
+cmd ::= let <lvalue> = <expr>
 ```
 
 The `assert` command is like an `assert` statement:
 
 ```
-cmd : assert <expr> , <string>
+cmd ::= assert <expr> , <string>
 ```
 
 There are no `return` commands.
@@ -369,9 +369,9 @@ There are no `return` commands.
 Printing and timing statements are available for debugging purposes.
 
 ```
-cmd : print <string>
-    | show <expr>
-    | time <cmd>
+cmd ::= print <string>
+      | show <expr>
+      | time <cmd>
 ```
 
 Printing outputs the string followed by a newline. Showing outputs the
@@ -384,9 +384,9 @@ code. Times should be as precise as possible (at least millisecond accuracy).
 Function syntax:
 
 ```
-cmd : fn <variable> ( <binding> , ... ) : <type> { ;
-          <stmt> ; ... ;
-      }
+cmd ::= fn <variable> ( <binding> , ... ) : <type> { ;
+            <stmt> ; ... ;
+        }
 ```
 
 Function definitions are interpreted in order of appearance (line by line), and
@@ -405,13 +405,13 @@ share the "argument" syntax for binding variables and arrays,
 Arguments can be raw variable bindings:
 
 ```
-argument : <variable>
+argument ::= <variable>
 ```
 
 Or arguments can bind an array and its dimensions:
 
 ```
-argument : <variable> [ <variable> , ... ]
+argument ::= <variable> [ <variable> , ... ]
 ```
 
 It is a compile-time error if the number of dimension variables does
@@ -423,13 +423,13 @@ Lvalues are merely arguments
 (2025-01-22: previously, lvalues could also bind struct fields):
 
 ```
-lvalue : <argument>
+lvalue ::= <argument>
 ```
 
 Bindings are the same as lvalues but also include types:
 
 ```
-binding : <argument> : <type>
+binding ::= <argument> : <type>
 ```
 
 > Here are some example arguments and the bindings they introduce:
