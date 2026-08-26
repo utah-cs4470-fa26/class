@@ -214,6 +214,12 @@ We will run your compiler using this style command:
 
 Your Makefile must invoke your compiler on the file that `TEST` points to
 and it must pass the flags that `FLAGS` points to.
+It should have a rule like this:
+
+```
+    run: compiler.class
+        java compiler $(FLAGS) $(TEST)
+```
 
 The `-l` flag must cause your compiler to perform lexical analysis only
 and print a list of tokens to stdout. After printing tokens,
