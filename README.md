@@ -4,7 +4,7 @@ CS 4470: Compilers, Fall 2026
 *Instructor*: Ben Greenman, benjaminlgreenman@gmail.com \
 *Assistant*: David Yue, david.yue@utah.edu \
 *Lecture*: Tue/Thurs 9:10am - 10:30am in [AEB 350](https://map.utah.edu/index.html?code=ARCH) \
-*Office Hours*: TBD \
+*Office Hours*: 1pm -(Ben)- 2pm -(David)- 3pm, MEB 3515 \
 *Discord*: <https://discord.gg/sHUJ4A3NN8> \
 *Github*: <https://github.com/utah-cs4470-fa26/class>
 
