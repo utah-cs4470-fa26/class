@@ -288,7 +288,7 @@ many times as you want. Make use of it.
 
 The weight assigned to each part is:
 
-| Weight | Function |
+| Weight | Part     |
 |--------|----------|
 | 70%    | Part 1   |
 | 15%    | Part 2   |
