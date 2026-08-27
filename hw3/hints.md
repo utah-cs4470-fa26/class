@@ -89,6 +89,8 @@ constants][jpl-num]. Specifically, you will need to:
  - Convert the string representing that integer or float into your
    language's 64-bit integer or float type.
 
+[jpl-num]: https://github.com/utah-cs4470-fa26/class/blob/main/spec.md#values
+
 *Use your language's built in integer and float parser for these
 tasks.* Specifically, use:
 

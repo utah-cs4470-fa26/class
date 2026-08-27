@@ -247,6 +247,8 @@ code][Testing your code] section. If the auto-grader cannot run your
 code, you will not receive credit. The auto-grader output is available
 to you at any time, as many times as you want. Make use of it.
 
+[Testing your code]: https://github.com/utah-cs4470-fa26/class/blob/main/hw3/README.md#testing-your-code
+
 The weight assigned to each part is:
 
 | Weight | Part     |
