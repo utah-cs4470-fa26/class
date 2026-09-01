@@ -224,7 +224,7 @@ It should have a rule like this:
 The `-l` flag must cause your compiler to perform lexical analysis only
 and print a list of tokens to stdout. After printing tokens,
 your compiler must print `Compilation succeeded`. If lexical analysis
-fails, your compiler must pring only `Compilation failed`.
+fails, your compiler must print only `Compilation failed`.
 We will expect this output format when testing your code.
 
 
@@ -245,7 +245,7 @@ The auto-grader uses these tests in three different ways.
   that you pass.
 
 - Part 3 asks your compiler to lex each file in `test-lexer3` and
-  verifies that your compiler issues a lexing error. There are 268
+  verifies that your compiler issues a lexing error. There are 269
   files, and your grade on this portion is the number of these tests
   that you pass. A lot of these tests are pretty repetitive, focusing
   mostly on invalid characters.
@@ -280,7 +280,7 @@ The staff JPL compiler supports the `-l` option. Your compiler must match its ou
 ```
 
 For large programs, it can be tedious to compare the list of tokens
-by hand. Instead, save the output frm each compiler (yours and staff's) to a
+by hand. Instead, save the output from each compiler (yours and staff's) to a
 file and use `diff` to compare:
 
     diff wrong-output.txt right-output.txt
@@ -294,13 +294,15 @@ Once things are working, push everything to your repository.
 
 Submit a link to your preferred GitHub commit on Canvas.
 
-Your solutions will be auto-graded. The auto-grader will use Github
+Your solutions will be auto-graded. The auto-grader will use GitHub
 Actions and runs on Ubuntu using the tests described above.
 
-Your compiler must be runnable as described in the [Testing your code]
-section. If the auto-grader cannot run your code, you will not receive
-credit. The auto-grader output is available to you at any time, as
+Your compiler must be runnable as described in the [Testing your code][Testing
+your code] section. If the auto-grader cannot run your code, you will not
+receive credit. The auto-grader output is available to you at any time, as
 many times as you want. Make use of it.
+
+[Testing your code]: https://github.com/utah-cs4470-fa26/class/blob/main/hw2/README.md#testing-your-code
 
 The weight assigned to each part is:
 
