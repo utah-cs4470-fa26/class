@@ -210,7 +210,7 @@ keywords first, and only match variables if that fails.
 
 We will run your compiler using this style command:
 
-    make run TEST=/grader/ok/001.jpl FLAGS=-p
+    make run TEST=/grader/ok/001.jpl FLAGS=-l
 
 Your Makefile must invoke your compiler on the file that `TEST` points to
 and it must pass the flags that `FLAGS` points to.
