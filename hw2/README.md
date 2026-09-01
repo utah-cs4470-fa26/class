@@ -297,10 +297,12 @@ Submit a link to your preferred GitHub commit on Canvas.
 Your solutions will be auto-graded. The auto-grader will use GitHub
 Actions and runs on Ubuntu using the tests described above.
 
-Your compiler must be runnable as described in the [Testing your code]
-section. If the auto-grader cannot run your code, you will not receive
-credit. The auto-grader output is available to you at any time, as
+Your compiler must be runnable as described in the [Testing your code][Testing
+your code] section. If the auto-grader cannot run your code, you will not
+receive credit. The auto-grader output is available to you at any time, as
 many times as you want. Make use of it.
+
+[Testing your code]: https://github.com/utah-cs4470-fa26/class/blob/main/hw2/README.md#testing-your-code
 
 The weight assigned to each part is:
 
