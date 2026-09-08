@@ -1,10 +1,6 @@
 Assignment 4: Parsing II: Functions, Recursion
 ======================================
 
-DRAFT
-
-TODO move () to hw5
-
 For this assignment you will continue working on your compiler's parser;
 modifying it to parse most JPL syntax, especially the recursive parts.
 
@@ -48,7 +44,6 @@ additional options:
 +     | void
       | [ <expr> , ... ]
 +     | <variable> { <expr> , ... }
-+     | ( <expr> )
 +     | <expr> . <variable>
 +     | <expr> [ <expr> , ... ]
 +     | <variable> ( <expr> , ... )
@@ -85,8 +80,6 @@ ReturnStmt
 ArrayLValue
 ```
 
-Parenthesized expressions, as in the grammar rule `expr : ( <expr> )`,
-do not produce AST nodes.
 
 ## Hints and Advice
 
@@ -122,7 +115,7 @@ them for later.
 
 # Submission and grading
 
-This assignment is due Friday Jan 31.
+This assignment is due Friday Sep 18.
 
 We are happy to discuss problems and solutions with you on Discord, in
 office hours, or by appointment.
@@ -137,5 +130,5 @@ The weight of each part is:
 | 10%    | Part 4   |
 | 10%    | Part 5   |
 
-Submit in pairs. If you submit on your own, there will be a 30% deduction.
+Work with a partner. If you work on your own, there will be a 30% deduction.
 
