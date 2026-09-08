@@ -108,7 +108,7 @@ tasks.* Specifically, use:
 
 We want to emphasize again that converting strings to numeric
 values---especially converting strings to floating-point values---is
-way harder than you think it is, and you should definitely not do this
-on your own, because you are extremely likely to get it wrong!
+very hard. Implementations that are not firmly grounded in knowledge
+about numerical analysis are extremely likely to go wrong!
 
 
