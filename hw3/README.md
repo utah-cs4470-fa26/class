@@ -237,7 +237,7 @@ be easier to find the difference.
 
 # Submission and grading
 
-This assignment is due Friday January 24.
+This assignment is due Friday September 11. Don't forget.
 
 We are happy to discuss problems and solutions with you on Discord, in
 office hours, or by appointment.
