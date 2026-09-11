@@ -292,6 +292,8 @@ Once things are working, push everything to your repository.
 
 # Submission and grading
 
+This assignment is due Friday Sep 4.
+
 Submit a link to your preferred GitHub commit on Canvas.
 
 Your solutions will be auto-graded. The auto-grader will use Github
