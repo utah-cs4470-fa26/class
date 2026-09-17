@@ -194,8 +194,7 @@ subclasses.)
 
 You may use regular expressions to define complex tokens such as `INTVAL`,
 `FLOATVAL`, `VARIABLE`, and `STRING`, as well as whitespace.
-Regular expressions are not required. Regular expressions are not
-particularly recommended. Use them sparingly if you do.
+Regular expressions are not required.
 
 Rigorously think through both what strings a token should match as
 well as which tokens it should *not* match. For example, make sure
