@@ -72,7 +72,7 @@ code. Ask for help on Discord.
   literal in the program.
   * Print structs in topological, alphabetical order. In more detail: build up a list of all structs
     as you process a JPL program, arrange the list into topologically-ordered groups
-    and sort each group alphabetically before printing in order.
+    and sort each group alphabetically (by ASCII code order) before printing.
 * Keep a counter per generated function (including `jpl_main`) for variable names, generate names in order: `_0`, `_1`, `_2`, ...
 * Convert JPL types to C types as follows:
   - `int` -> `int64_t`

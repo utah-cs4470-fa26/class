@@ -115,6 +115,10 @@ solution.
 The reward is a 0.5% increase (one half of 1 percent) added to your overall
 final grade.
 
+Everyone can get the extra credit. I just don't think it is worth your time
+to do it, which is why the reward is small. But maybe you'll find a clever
+solution that we can use in future years.
+
 
 # Testing your code
 
