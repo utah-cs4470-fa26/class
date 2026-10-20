@@ -82,8 +82,8 @@ code. Ask for help on Discord.
   - array -> custom struct with ...
     + one int field `di` per dimension
     + one pointer field `data` for the elements
-    + a name of the form `_aRANK_TYPE` where `RANK` is an integer rank and `TYPE` is the C type of its elements (with any whitespace replaced by an underscore)
-    + Example: `int[,]` -> `typedef struct { int64_t d1 ; int64_t d2 ; int64_t *data ; } _a1_long_long;`
+    + a name of the form `_aRANK_TYPE` where `RANK` is an integer rank and `TYPE` is the C type of its elements
+    + Example: `int[,]` -> `typedef struct { int64_t d1 ; int64_t d2 ; int64_t *data ; } _a2_int64_t;`
   - struct -> struct name (which will have been defined by an earlier struct command)
 
 Use the helper functions provided by `runtime.c` in your output, such as `jpl_alloc`.
