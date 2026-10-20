@@ -62,9 +62,9 @@ code. Ask for help on Discord.
 #### Hints
 
 * Truncate floats when printing. Example: print `3.999` as `3.0`.
+* Define `void_t` in your header. It is not in the runtime library because it is an empty struct and therefore non-standard.
 * There are several built-in struct types that you **must not** generate C code for.
   See [runtime.h](https://github.com/utah-cs4470-fa26/runtime/blob/main/runtime.h) for their definitions.
-  - `void_t` for JPL `void`
   - `rgba` for JPL `rgba`
   - `_a2_rgba` for JPL `rgba[,]`
   - `_a1_int64_t` for JPL `int[]` (used to pass command line arguments to the main function)
