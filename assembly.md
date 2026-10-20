@@ -10,16 +10,15 @@ This section has short tips on how to work with assembly code.
 
 ## Compiling and running
 
-You will be using an assembler called NASM. We picked this assembler
-because it is user-friendly (compared to other assemblers) and
-cross-platform. It has [nice tutorials][tutorial] and a [comprehensive
-manual][manual].
+You will be using an assembler called NASM.
+It is user-friendly (compared to other assemblers) and
+cross-platform.
 
 [tutorial]: https://cs.lmu.edu/~ray/notes/nasmtutorial/
 [manual]: https://nasm.us/doc/nasmdoc0.html
 
 
-You can assemble code like this:
+Assemble code like this:
 
     nasm -fXXX code.s
 
