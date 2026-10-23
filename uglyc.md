@@ -340,7 +340,11 @@ loop over all indexes, multiplying and adding.
 
 # Calling functions
 
-HW9
+> This will be harder in assembly.
+
+To compile a function call, generate code for the arguments left-to-right
+and call the function. The function will have the same name in JPL
+and in C, whether it is user-defined or built in.
 
 
 # Control flow
@@ -448,6 +452,11 @@ C:
 bool _0 = true;
 show("(BoolType)", _0);
 ```
+
+## print
+
+To compile a print command, call the runtime function `print` with the string
+argument.
 
 
 # Function definitions
