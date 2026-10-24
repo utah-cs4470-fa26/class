@@ -10,9 +10,8 @@ This section has short tips on how to work with assembly code.
 
 ## Compiling and running
 
-You will be using an assembler called NASM.
-It is user-friendly (compared to other assemblers) and
-cross-platform.
+You will be using an assembler called NASM. It is user-friendly
+(compared to other assemblers) and cross-platform.
 
 [tutorial]: https://cs.lmu.edu/~ray/notes/nasmtutorial/
 [manual]: https://nasm.us/doc/nasmdoc0.html
@@ -34,7 +33,7 @@ separately][runtime], and you can use `clang` or `gcc` instead of `ld`
 if you don't have an `ld` command. Consult the JPL runtime
 documentation for more details (such as a sample `clang` call).
 
-[runtime]:https://github.com/utah-cs4470-sp25/runtime 
+[runtime]:https://github.com/utah-cs4470-fa26/runtime 
 
 This command will produce a file called `a.out`, short for "assembler
 output". (Even though it is not actually output by your assembler...)
@@ -76,7 +75,7 @@ a program's execution:
   instruction is a `call`, in which case it runs until that call
   returns. (You might be familiar with "step over"; that's what this
   does.)
-   
+
 While the program is paused, you can look at its state. There are two
 important commands here:
 
@@ -462,19 +461,19 @@ When doing an integer division or modulus, you need to check whether
 the denominator is zero. Do so like this:
 
     cmp r10, 0
-    jne .BAD
+    jne .jump1
     lea rdi, [rel ERROR_MESSAGE]
     call _fail_assertion
-    .BAD:
+    .jump1:
 
 This code compares the denominator, R10, to 0. If they are not equal,
 it skips to the next thing (presumably a division or modulus) but if
 they are equal, it loads the *address of* a string constant containing
-an error message and calls the runtime's `fail_assertion`  method.
+an error message and calls the runtime's `fail_assertion` method.
 
 The `ERROR_MESSAGE` constant should be defined in the constant part of
-the assembly file to containt a C string. The `BAD` jump should have a
-unique name each time it's used.
+the assembly file to containt a C string. The jump label `jump1` should
+be a newly-generated unique name.
 
 Dividing floats is easy:
 
@@ -712,7 +711,7 @@ looks like this:
 Note the underscore; see the [Runtime Documentation][runtime], in the
 section on platform support, for details why.
 
-[runtime]:https://github.com/utah-cs4470-sp25/runtime 
+[runtime]:https://github.com/utah-cs4470-fa26/runtime 
 
 Loading the address of the struct return value looks like this:
 
