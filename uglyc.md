@@ -76,17 +76,16 @@ version of the JPL type `T`, and `R` is
 an array rank (number of commas + 1).
 
 
-| JPL type  | C type    |
-|-----------|-----------|
-| `int`     | `int64_t` |
-| `float`   | `double`  |
-| `bool`    | `bool`    |
-| `void`    | `void_t`  |
-| `bool[]`  | `a1_bool` |
-| `bool[,]` | `a2_bool` |
-| `T[R]`    | `aR_T+`   |
-| `S`       | `S`       |
-|-----------|-----------|
+| JPL type  | C type     |
+|-----------|------------|
+| `int`     | `int64_t`  |
+| `float`   | `double`   |
+| `bool`    | `bool`     |
+| `void`    | `void_t`   |
+| `bool[]`  | `_a1_bool` |
+| `bool[,]` | `_a2_bool` |
+| `T[R]`    | `aR_T+`    |
+| `S`       | `S`        |
 
 
 # Memory Layout and C Struct Declarations
@@ -268,7 +267,6 @@ for the result.
 Mod (`%`) on floats should use the `fmod` function. For other binary
 operations, the JPL names and C names match.
 
-|--------|-------|------|
 | JPL op | Type  | C op |
 |--------|-------|------|
 | +      | N/A   | +    |
@@ -283,7 +281,6 @@ operations, the JPL names and C names match.
 | >=     | N/A   | >=   |
 | ==     | N/A   | ==   |
 | !=     | N/A   | !=   |
-|--------|-------|------|
 
 
 ## Indexing
