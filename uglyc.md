@@ -303,7 +303,7 @@ operations, the JPL names and C names match.
 The boolean operators `&&` and `||` have short-circuiting behavior.
 This means that some control flow is necessary to compile them correctly.
 
-And (`&&`) short circuits to false when its first argument is false.
+`&&` short circuits to false when its first argument is false.
 In that case, the second argument is never evaluated.
 To compile an `&&`:
 
@@ -317,8 +317,8 @@ To compile an `&&`:
 - Assign the result of the right-hand argument to your result variable,
 - Output the end label
 
-Or (`||`) short circuits when its first argument is true.
-To compile an `||`, follow the same steps as for `&&` with one change:
+`||` short circuits when its first argument is true.
+To compile an `||`, follow the same steps as `&&` with one change:
 
 - ...
 - Output `if (0 != lhs)`, checking whether the left-hand result is **true**
@@ -462,6 +462,7 @@ do nothing (when the first loop var reaches its maximum and we are done).
     if (_3 > 0)
     goto _jump1;
     fail_assertion("non-positive loop bound");
+    _jump1:;
     ```
 - Initialize the result integer to `0`.
 - For each loop variable _in reverse order_:
@@ -489,16 +490,17 @@ Steps in **bold** below are either new or modified.
 
 - Declare a name for the result **array**.
 - Output C to declare the result, but not to assign to it.
-- Generate code **and asserts** for each of the loop-bound expressions, left to right.
+- Generate code and asserts for each of the loop-bound expressions, left to right.
   - For bound `e_i`, generate code for the expression and then immediately
     **assign the output dimension value** and
     generate an assert.
     For example, with `_3` as the value of the bound:
     ```c
-    _result.d0 = _3; // NEW
+    _result.d0 = _3; // NEW do this for array loops, not sum loops
     if (_3 > 0)
     goto _jump1;
     fail_assertion("non-positive loop bound");
+    _jump1:;
     ```
 - **Initialize the result array by computing heap space:**
   - Declare a new C name for the size (`_4`).
@@ -604,9 +606,9 @@ To compile `read image s to v`, generate a name for the result
 and output C that calls the runtime function `read_image(s)`,
 where `s` is the string argument to `read`.
 
-If the variable `v` is a struct lvalue, also
+If the variable `v` is an array lvalue, also
 output code to bind its variables using array struct fields.
-Use the JPL names for the variables.
+Use the JPL names for the variables instead of generating C names.
 
 Example JPL:
 
