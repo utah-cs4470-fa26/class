@@ -18,6 +18,8 @@ That's why it's called Ugly C.
 
 ## Code Structure
 
+> HW8
+
 Ugly C programs are made of 3 sections: Header, Structs, Functions.
 
 ### Header
@@ -69,6 +71,8 @@ void jpl_main(_a1_int64_t args) {
 
 ## Types
 
+> HW8
+
 Translate JPL types to C types as follows,
 where `S` is a struct name,
 `T` is any JPL type, `T+` is the C
@@ -89,6 +93,8 @@ an array rank (number of commas + 1).
 
 
 # Memory Layout and C Struct Declarations
+
+> HW8
 
 Array elements will be stored on the heap. Use the runtime function
 `jpl_alloc` to get heap space.
@@ -168,6 +174,8 @@ a variable (`let` or `read`) and a function tries to reference that variable.
 
 ## Basic Literals
 
+> HW8
+
 To compile an integer literal, output a C declaration such as:
 
 ```c
@@ -186,6 +194,8 @@ To compile a boolean or void constant, make a similar declaration.
 
 ## Variables
 
+> HW8
+
 When you find a JPL variable `x`, lookup its name and output a reference:
 
 ```c
@@ -197,6 +207,8 @@ by your typechecker) and was given a C name.
 
 
 ## Struct Literals
+
+> HW8
 
 To compile a struct constructor call, such as:
 
@@ -213,6 +225,8 @@ rgba _4 = {_0, _1, _2, _3}
 
 
 ## Array Literals
+
+> HW8
 
 To compile an inline array:
 
@@ -243,6 +257,8 @@ _3.data[2] = _2;
 
 
 ## Arithmetic
+
+> HW8
 
 To compile a unary operation, first compile the target expression,
 then generate a name for the result and output a C declaration.
@@ -283,7 +299,16 @@ operations, the JPL names and C names match.
 | !=     | N/A   | !=   |
 
 
+## Short-Circuit Arithmetic
+
+> HW9
+
+TODO
+
+
 ## Indexing
+
+> HW8
 
 ### Struct Index
 
@@ -337,6 +362,8 @@ loop over all indexes, multiplying and adding.
 
 # Calling functions
 
+> HW8
+
 > This will be harder in assembly.
 
 To compile a function call, generate code for the arguments left-to-right
@@ -347,6 +374,8 @@ and in C, whether it is user-defined or built in.
 # Control flow
 
 ## Conditionals
+
+> HW8
 
 > The C code is straightforward. The hardest part here is generating names and jumps
 >  in the right order.
@@ -390,12 +419,16 @@ _jump2:;
 
 ## Loops
 
-HW9
+> HW9
+
+Array and sum loops.
 
 
 # Commands and Statements
 
 ## let
+
+> HW8
 
 To compile a let, generate C for the right hand side
 and record the generated name.
@@ -412,6 +445,8 @@ the JPL name `x` refers to a C name such as `_2`.
 
 
 ## assert
+
+> HW8
 
 To compile an assert command, generate code for the target
 expression and then check that the result is not zero (`0 != _999`).
@@ -434,6 +469,8 @@ _jump1:;
 
 ## show
 
+> HW8
+
 To compile a show command, generate code for the target expression
 and call the runtime function `show` with a type string and the result.
 
@@ -452,13 +489,38 @@ show("(BoolType)", _0);
 
 ## print
 
+> HW8
+
 To compile a print command, call the runtime function `print` with the string
 argument.
 
 
-# Function definitions
+## read
 
-HW9
+> HW9
 
+## write
+
+> HW9
+
+## time
+
+> HW9
+
+# Function Definitions
+
+> HW9
+
+## let
+
+> HW9
+
+## assert
+
+> HW9
+
+## return
+
+> HW9
 
 
