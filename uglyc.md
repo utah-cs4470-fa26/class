@@ -196,13 +196,10 @@ To compile a boolean or void constant, make a similar declaration.
 
 > HW8
 
-When you find a JPL variable `x`, lookup its name and output a reference:
+When you find a JPL variable `x`, lookup its name, which is probably something ugly like `_0`.
+Output nothing to the C program.
 
-```c
-_0
-```
-
-This will work if the JPL variable was previously defined (which is guaranteed
+The name will be found if the JPL variable was previously defined (which is guaranteed
 by your typechecker) and was given a C name.
 
 
@@ -219,7 +216,7 @@ rgba{1.0, 1.0, 1.0, 1.0}
 First compile each of the expressions (assigning C names to their outputs)
 and output a C struct constructor call:
 
-```
+```c
 rgba _4 = {_0, _1, _2, _3}
 ```
 
@@ -303,7 +300,29 @@ operations, the JPL names and C names match.
 
 > HW9
 
-TODO
+The boolean operators `&&` and `||` have short-circuiting behavior.
+This means that some control flow is necessary to compile them correctly.
+
+And (`&&`) short circuits to false when its first argument is false.
+In that case, the second argument is never evaluated.
+To compile an `&&`:
+
+- Declare a new name to hold the result,
+- Compile the left-hand argument,
+- Assign the result of the left-hand argument to your result variable,
+- Output `if (0 == lhs)`, checking whether the left-hand result is false,
+- Create a jump label for the end of the `&&` expression,
+- Output a `goto` for the jump label,
+- Compile the right-hand argument,
+- Assign the result of the right-hand argument to your result variable,
+- Output the end label
+
+Or (`||`) short circuits when its first argument is true.
+To compile an `||`, follow the same steps as for `&&` with one change:
+
+- ...
+- Output `if (0 != lhs)`, checking whether the left-hand result is **true**
+- ...
 
 
 ## Indexing
@@ -421,7 +440,89 @@ _jump2:;
 
 > HW9
 
-Array and sum loops.
+Loops generate a lot of C code.
+
+The general strategy for loops is to initialize loop state,
+run the loop body,
+and increment the variables **right-to-left**.
+The final step of incrementing is complicated because
+we sometimes need to jump to the loop body,
+sometimes need to reset a variable, and sometimes need to
+do nothing (when the first loop var reaches its maximum and we are done).
+
+
+### Sum loop
+
+- Declare a name for the result integer.
+- Output C to declare the result, but not to assign to it.
+- Generate code **and asserts** for each of the loop-bound expressions, left to right.
+  - For bound `e_i`, generate code for the expression and then immediately
+    generate an assert. For example, with `_3` as the value of the bound:
+    ```c
+    if (_3 > 0)
+    goto _jump1;
+    fail_assertion("non-positive loop bound");
+    ```
+- Initialize the result integer to `0`.
+- For each loop variable _in reverse order_:
+  - Declare a C name (`_0`),
+  - Output C to initialize the variable to `0`.
+- Generate and output a jump label (`_jump2:;`)
+- Compile the loop body expression
+- Update the result variable: `_res += _x`, where `_x` is the result of the loop body.
+- Output `_final++` for the final loop variable.
+- For each loop variable _in reverse order_ again, starting from `_final`:
+  - Check `if (_var < _bound)`, comparing the variable to its bound
+  - Output a `goto` to jump to the top of the loop
+  - Finally, if there are additional variables remaining:
+    - Output `_var = 0;` to reset the current variable
+    - Output `_next++;` to increment the next variable
+- The end. Output nothing else.
+
+
+### Array loop
+
+Array loops are similar to sum loops, except they must allocate
+space for a result array and update array cells as the loop runs.
+
+Steps in **bold** below are either new or modified.
+
+- Declare a name for the result **array**.
+- Output C to declare the result, but not to assign to it.
+- Generate code **and asserts** for each of the loop-bound expressions, left to right.
+  - For bound `e_i`, generate code for the expression and then immediately
+    **assign the output dimension value** and
+    generate an assert.
+    For example, with `_3` as the value of the bound:
+    ```c
+    _result.d0 = _3; // NEW
+    if (_3 > 0)
+    goto _jump1;
+    fail_assertion("non-positive loop bound");
+    ```
+- **Initialize the result array by computing heap space:**
+  - Declare a new C name for the size (`_4`).
+  - Output C to initialize to 1: `int64_t _4 = 1;`
+  - For each bound value, multiply the size: `_4 *= _bound`
+  - Multiply by the size of the element type: `_4 *= sizeof(T)`
+  - Allocate `_result.data = jpl_alloc(_4);`
+- For each loop variable _in reverse order_:
+  - Declare a C name (`_0`),
+  - Output C to initialize the variable to `0`.
+- Generate and output a jump label (`_jump2:;`)
+- Compile the loop body expression
+- **Update the result variable:**
+  - Compute an index into `_result` the same way that other array indexes are computed (see above).
+  - Assign `_index = _x`, where `_x` is the result of the loop body.
+- Output `_final++` for the final loop variable.
+- For each loop variable _in reverse order_ again, starting from `_final`:
+  - Check `if (_var < _bound)`, comparing the variable to its bound
+  - Output a `goto` to jump to the top of the loop
+  - Finally, if there are additional variables remaining:
+    - Output `_var = 0;` to reset the current variable
+    - Output `_next++;` to increment the next variable
+- The end.
+
 
 
 # Commands and Statements
@@ -499,28 +600,125 @@ argument.
 
 > HW9
 
+To compile `read image s to v`, generate a name for the result
+and output C that calls the runtime function `read_image(s)`,
+where `s` is the string argument to `read`.
+
+If the variable `v` is a struct lvalue, also
+output code to bind its variables using array struct fields.
+Use the JPL names for the variables.
+
+Example JPL:
+
+```
+read image "rumi.jpg" to arr[H, W]
+```
+
+C output:
+
+```c
+_a2_rgba _0 = read_image("rumi.jpg");
+int64_t H = _0.d0;
+int64_t W = _0.d1;
+```
+
+
 ## write
 
 > HW9
+
+To compile a `write` command,
+simply generate code for the target expression
+and call the runtime function `write_image(r, s)`,
+where `r` is the result of the target expression
+and `s` is the string argument to `write`.
+
 
 ## time
 
 > HW9
 
+To compile a `time` command,
+generate two names and two calls to `get_time()`:
+
+- Generate a name for the "before" time,
+- Call `get_time()` to get a `double` value for the before time,
+- Compile the target expression,
+- Generate a name for the "after" time,
+- Call `get_time()` to get a `double` value for the after time,
+- Call the runtime function `print_time(a - b)`, where `a` is the after time
+  and `b` is the before time.
+
+
 # Function Definitions
 
 > HW9
 
-## let
+To compile a function declaration,
+translate the header to C,
+compile each of the statements,
+and compile the return.
+If the function has no `return`,
+return a `void_t` value by default.
+
+When translating the header,
+convert all JPL types to C types
+but **do not** rename variables.
+Use the JPL names.
+For an array lvalue, like `a[H, W]`,
+the C function should declare only `a`
+and access the fields using `a.d0` and `a.d1`.
+
+Example JPL function:
+
+```
+fn bp(img[H,W] : float[,],
+      i : int,
+      j : int)
+     : float {
+  return 1.0
+}
+```
+
+C output:
+
+```c
+double bp(_a2_double img,
+          int64_t i,
+          int64_t j) {
+    double _0 = 1.0;
+    return _0;
+}
+```
+
+
+## let, assert
 
 > HW9
 
-## assert
+The steps to compile `let` and `assert` statements are exactly
+the same as the steps for the commands.
 
-> HW9
 
 ## return
 
 > HW9
+
+To compile a return, generate code for its target expression and return the result variable.
+
+Example JPL:
+
+```
+    return 99 + 0
+```
+
+C output:
+
+```c
+    int64_t _0 = 99;
+    int64_t _1 = 0;
+    int64_t _2 = _0 + _1;
+    return _2;
+```
 
 
