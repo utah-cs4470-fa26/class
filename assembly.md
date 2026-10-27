@@ -4,6 +4,9 @@ x86_64 Assembly Handbook for JPL
 This document describes everything you need to know about assembly and
 low-level programming to generate code for your JPL compiler.
 
+Quick Reference:
+<https://www.felixcloutier.com/x86/>
+
 # Assembly tools
 
 This section has short tips on how to work with assembly code.
