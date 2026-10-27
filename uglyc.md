@@ -88,7 +88,7 @@ an array rank (number of commas + 1).
 | `void`    | `void_t`   |
 | `bool[]`  | `_a1_bool` |
 | `bool[,]` | `_a2_bool` |
-| `T[R]`    | `aR_T+`    |
+| `T[R]`    | `_aR_T+`    |
 | `S`       | `S`        |
 
 
