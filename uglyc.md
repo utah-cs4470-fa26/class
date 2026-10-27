@@ -307,7 +307,7 @@ This means that some control flow is necessary to compile them correctly.
 In that case, the second argument is never evaluated.
 To compile an `&&`:
 
-- Declare a new name to hold the result,
+- Declare a new name to hold the result. _Do not output any C._
 - Compile the left-hand argument,
 - Assign the result of the left-hand argument to your result variable,
 - Output `if (0 == lhs)`, checking whether the left-hand result is false,
