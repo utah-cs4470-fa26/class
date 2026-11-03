@@ -281,7 +281,7 @@ x86_64 CPUs have 16 integer registers and 8 floating point registers
 that you can access directly. All are 64 bits wide. We will be using
 them like this:
 
-- `rsp`: The stack pointer, which delimts the end of the stack
+- `rsp`: The stack pointer, which delimits the end of the stack
 - `rbp`: The base pointer, which delimits the start of the stack
 - `rax`: The register containing integer return values and which we'll
   use as the main register for various stuff
@@ -700,10 +700,6 @@ To call a function, perform the following sequence of steps:
 - Drop the padding, if any
 - If the return value is in a register, push it onto the stack
 
-> TODO after 2025: functions that return `{}` in JPL should not return any
-> value at all. Do not allocate stack space. Do not push a value onto the
-> stack.
-
 Most of this uses straightforward instructions. Calling the function
 looks like this:
 
@@ -1083,10 +1079,4 @@ Then add the postamble:
 Note that you should do this for every `return` statement. If there's
 more than one, then you'll end up with multiple postambles and `ret`
 instructions, but that's OK. (Later ones won't be executed).
-
-> TODO after 2025: generating multiple postambles should not misalign the stack.
-> TODO after 2025: If there's no `return` instruction at all, you'll need to
-> add assembly TODO after 2025: corresponding to `return {}` at the end of the
-> function.
-
 
