@@ -231,10 +231,8 @@ to look up an instruction is [Felix Cloutier's website][felix]:
 
 * <https://www.felixcloutier.com/x86/>
 
-Here are some short guides to x86_64:
+Another x86_64 guide:
 
-- <http://www.cs.cmu.edu/afs/cs/academic/class/15213-s20/www/recitations/x86-cheat-sheet.pdf>
-- <https://michaelspangler.io/assets/docs/introduction-to-x64-assembly-181178.pdf>
 - <https://www.cs.tufts.edu/comp/40/docs/x64_cheatsheet.pdf>
 
 If you look up information about x86_64 online, make sure it's for
