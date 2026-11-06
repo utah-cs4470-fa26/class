@@ -371,7 +371,8 @@ Similarly we can drop values from the stack if we no longer need them:
 
 When calling functions, the stack must be aligned to a multiple of 16
 bytes, which we do by reserving padding bytes and then later dropping
-them.
+them. Note that `call` instructions always push an 8-byte return address
+onto the stack; take this into account when computing alignment.
 
 ## Copying data
 
