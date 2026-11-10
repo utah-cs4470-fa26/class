@@ -123,7 +123,7 @@ were no local variables, don't output this instruction.
 
 A `let` statement/command first generates code for the right-hand expression
 (the `e1` in `let x = e1`). The result will be the last value on the stack. Your
-compiler must remember the stack offset of this result (offset from `rbp`)
+compiler must remember the stack offset of this result (offset from `rbp` or `r12`)
 to generate code for references to the bound variable.
 
 
