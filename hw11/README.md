@@ -1,7 +1,7 @@
 Assignment 11: ASM Functions
 ============================
 
-Generate assembly for JPL functions and let bindings.
+Generate assembly for JPL functions, let bindings, and variables.
 
 ```diff
 cmd : show <expr>
