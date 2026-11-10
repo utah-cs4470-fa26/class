@@ -91,7 +91,7 @@ To call a function, do the following:
 - Call the function
 
 Before the `call` instruction (and before you start popping register arguments),
-the stack should look like this:
+the stack should look like this (`rbp > rsp`):
 
 ![stack for call](./stack-for-call.png)
 
