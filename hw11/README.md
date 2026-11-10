@@ -90,8 +90,8 @@ To call a function, do the following:
   value in RDI
 - Call the function
 
-After the call, just before you start popping register arguments,
-the stack should look like this:
+After the call, before you start popping register arguments,
+the stack should look like this (return address pushed by `call` is not shown):
 
 ![stack for call](./stack-for-call.png)
 
