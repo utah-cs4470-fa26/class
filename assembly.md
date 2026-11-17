@@ -634,7 +634,7 @@ index is constructed like so:
 
 Here, there is one `imul`/`add` pair for each array index, `S` is the
 size of each array element, and `N` is the rank of the array. Array
-indices are also be computed inside `array` loops.
+indices are also computed inside `array` loops.
 
 After this code, the RAX register contains a pointer to the specific
 array element. To read out that element, one simply needs allocate `S`
