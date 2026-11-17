@@ -1077,7 +1077,8 @@ Then add the postamble:
     pop rbp
     ret
 
-Note that you should do this for every `return` statement. If there's
-more than one, then you'll end up with multiple postambles and `ret`
-instructions, but that's OK. (Later ones won't be executed).
+Ignore subsequent return statements. They are dead code.
+
+> Fall 2026: Homework will not ask you to compile any functions with more than
+> one return statement.
 
