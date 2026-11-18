@@ -347,7 +347,7 @@ like so:
 
 # Submission and grading
 
-This assignment is due Friday April 11.
+This assignment is due Friday Dec 4.
 
 | Weight | Function     |
 |--------|--------------|
